@@ -1,0 +1,36 @@
+/* ── THEME.CSS — variables, reset, base body ── */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #ece9e3;
+  --fg: #1c1c1c;
+  --muted: #888;
+  --border: #bfbab0;
+  --win-bg: #1e1e1e;
+  --win-text: #e8e4dc;
+  --win-muted2: #888;
+  --win-border2: #333;
+}
+
+html, body { width: 100%; height: 100%; overflow: hidden; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Inconsolata', monospace;
+  font-size: 13px;
+  height: 100vh;
+  user-select: none;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 300px;
+  pointer-events: none;
+  z-index: 0;
+}
