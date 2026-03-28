@@ -90,7 +90,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 
 .detail-photo {
@@ -127,7 +127,7 @@
   inset: 0;
   top: 36px;
   background: var(--bg);
-  z-index: 400;
+  z-index: 600;
   overflow-y: auto;
   display: block;
   padding: 60px 0 80px;
@@ -207,8 +207,6 @@
   line-height: 1.75;
   color: #666;
   margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--border);
 }
 
 .gd-grid {
@@ -231,6 +229,15 @@
 
 .gd-placeholder.tall { aspect-ratio: 3/4; }
 .gd-placeholder.wide { grid-column: span 2; aspect-ratio: 16/7; }
+
+.gd-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+  border-radius: 3px;
+}
 
 .gd-nav-link {
   font-size: inherit;
@@ -257,6 +264,8 @@
 
 .gd-slide {
   min-width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
 }
 
 .gd-slider-controls {
@@ -264,6 +273,8 @@
   align-items: center;
   gap: 12px;
   margin-top: 10px;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--border);
   position: relative;
   z-index: 1;
 }
@@ -306,7 +317,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  z-index: 500;
+  z-index: 650;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.15s, transform 0.15s;
@@ -404,7 +415,7 @@
 .bio-overlay {
   position: fixed;
   inset: 0;
-  z-index: 499;
+  z-index: 649;
   display: none;
 }
 
@@ -425,7 +436,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  z-index: 500;
+  z-index: 650;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.15s, transform 0.15s;
@@ -512,10 +523,54 @@
   margin-bottom: 6px;
 }
 
+.dc-video {
+  padding: 24px 16px;
+}
+
+.dc-video iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  border-radius: 4px;
+}
+
+.dc-grid-header {
+  padding: 24px 16px 0;
+}
+
+.dc-grid-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #e8e4dc;
+  letter-spacing: 0.02em;
+  margin-bottom: 6px;
+}
+
+.dc-grid-sub {
+  font-size: 13px;
+  color: #888;
+  line-height: 1.6;
+}
+
+.dc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+  padding: 0 16px 32px;
+}
+
+.dc-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
 .dc-overlay {
   position: fixed;
   inset: 0;
-  z-index: 499;
+  z-index: 649;
   display: none;
 }
 
@@ -536,7 +591,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  z-index: 500;
+  z-index: 650;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.15s, transform 0.15s;
@@ -620,7 +675,7 @@
 .archive-overlay {
   position: fixed;
   inset: 0;
-  z-index: 499;
+  z-index: 649;
   display: none;
 }
 
@@ -640,7 +695,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  z-index: 500;
+  z-index: 650;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.15s, transform 0.15s;
