@@ -12,6 +12,13 @@
 </head>
 <body>
 
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#" class="mobile-nav-link" id="mobileInfoLink">Info</a>
+    <a href="#" class="mobile-nav-link" id="mobileDcLink">Don't Coast</a>
+    <a href="#" class="mobile-nav-link" id="mobileArchiveLink">Archive</a>
+    <a href="#" class="mobile-nav-link" id="mobileGdLink">Selected Work</a>
+  </div>
+
   <!-- MENUBAR -->
   <div class="menubar">
     <div style="display:flex; align-items:center; gap:16px;">
@@ -23,6 +30,7 @@
       <a href="#" class="menubar-link" id="dcLink">Don't Coast</a>
       <a href="#" class="menubar-link" id="archiveLink">Archive</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     <div class="menubar-right">
       <div class="menubar-info-group" id="weatherTimeGroup">
 <span class="menubar-location">Boulder, CO</span><span class="menubar-sep" style="color:var(--muted);padding:0 4px;">·</span><span id="weatherDisplay" class="menubar-weather">—</span><span class="menubar-sep" style="color:var(--muted);padding:0 4px;">·</span><span id="clock" class="menubar-clock">—</span>        <div class="menubar-tooltip">Boulder, CO</div>
@@ -98,13 +106,6 @@
             <div class="info-row"><span>Platform</span><span id="p-platform"></span></div>
             <div class="info-row"><span>Status</span><span id="p-status"></span></div>
           </div>
-          <!-- Obsidian screenshot dropdown -->
-          <div id="p-screenshot-wrap" style="display:none; margin-top:12px;">
-            <div id="p-screenshot-toggle" class="info-link" style="cursor:pointer;">
-              ▸ See screenshot
-            </div>
-            <img id="p-screenshot-img" style="display:none; width:100%; margin-top:8px; border-radius:3px; border:1px solid var(--border);" src="placeholder-screenshot.png" alt="Obsidian Customization screenshot">
-          </div>
           <!-- Project link -->
           <div id="p-link-wrap" style="margin-top:14px; border-top:1px solid var(--border); padding-top:12px;">
             <span id="p-link" class="info-link"></span>
@@ -128,14 +129,15 @@
   <p class="gd-section-desc">Visual designer on a ground-up redesign of the platform focused on private social sharing. </p>
   <div class="gd-slider">
     <div class="gd-slides">
-      <div class="gd-slide"><div class="gd-placeholder">Slide 1</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 2</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 3</div></div>
+      <div class="gd-slide"><img src="photobucket/Slide 4_3 - 1.jpg" alt="Photobucket slide 1" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="photobucket/Slide 4_3 - 2.jpg" alt="Photobucket slide 2" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="photobucket/Slide 4_3 - 3.jpg" alt="Photobucket slide 3" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="photobucket/Slide 4_3 - 4.jpg" alt="Photobucket slide 4" class="gd-slide-img"></div>
     </div>
   </div>
   <div class="gd-slider-controls">
     <button class="gd-prev">←</button>
-    <span class="gd-count">1 / 3</span>
+    <span class="gd-count">1 / 4</span>
     <button class="gd-next">→</button>
   </div>
 </div>
@@ -145,14 +147,18 @@
   <p class="gd-section-desc">Sole designer. Brand identity and collateral for a property development firm.</p>
   <div class="gd-slider">
     <div class="gd-slides">
-      <div class="gd-slide"><div class="gd-placeholder">Slide 1</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 2</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 3</div></div>
+      <div class="gd-slide"><img src="arcadia/ArcadiaCompanies_04_Page_04.jpg" alt="Arcadia slide 1" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="arcadia/ArcadiaCompanies_04_Page_03.jpg" alt="Arcadia slide 2" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="arcadia/ArcadiaCompanies_04_Page_12.jpg" alt="Arcadia slide 3" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="arcadia/ArcadiaCompanies_04_Page_13.jpg" alt="Arcadia slide 4" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="arcadia/Slide 4_3 - 37.jpg" alt="Arcadia slide 5" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="arcadia/Slide 4_3 - 38.jpg" alt="Arcadia slide 6" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="arcadia/Slide 4_3 - 39.jpg" alt="Arcadia slide 7" class="gd-slide-img"></div>
     </div>
   </div>
   <div class="gd-slider-controls">
     <button class="gd-prev">←</button>
-    <span class="gd-count">1 / 3</span>
+    <span class="gd-count">1 / 7</span>
     <button class="gd-next">→</button>
   </div>
 </div>
@@ -162,14 +168,20 @@
   <p class="gd-section-desc">Booking software for outdoor guides. Founding designer at a six-person startup, built the design function from scratch.</p>
   <div class="gd-slider">
     <div class="gd-slides">
-      <div class="gd-slide"><div class="gd-placeholder">Slide 1</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 2</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 3</div></div>
+      <div class="gd-slide"><img src="origin/Group 20185.jpg" alt="Origin slide 1" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="origin/Slide 4_3 - 18.jpg" alt="Origin slide 2" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="origin/icon-set.png" alt="Origin slide 3" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="origin/Frame 20.jpg" alt="Origin slide 4" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="origin/origin-image.jpg" alt="Origin slide 5" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="origin/Frame 22.jpg" alt="Origin slide 6" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="origin/Frame 23.jpg" alt="Origin slide 7" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="origin/Frame 24.jpg" alt="Origin slide 8" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="origin/Frame 26.jpg" alt="Origin slide 9" class="gd-slide-img"></div>
     </div>
   </div>
   <div class="gd-slider-controls">
     <button class="gd-prev">←</button>
-    <span class="gd-count">1 / 3</span>
+    <span class="gd-count">1 / 9</span>
     <button class="gd-next">→</button>
   </div>
 </div>
@@ -179,15 +191,21 @@
   <p class="gd-section-desc">A non-profit plant nursery. Independent contract, brand identity rooted in the neighborhood.</p>
   <div class="gd-slider">
     <div class="gd-slides">
-      <div class="gd-slide"><div class="gd-placeholder">Slide 1</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 2</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 3</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 4</div></div>
+      <div class="gd-slide"><img src="urbanhabitat/Artboard 1 copy 5.png" alt="Urban Habitat slide 1" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="urbanhabitat/Artboard 1.png" alt="Urban Habitat slide 2" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="urbanhabitat/Artboard 1 copy.png" alt="Urban Habitat slide 3" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="urbanhabitat/Artboard 1 copy 2.png" alt="Urban Habitat slide 4" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="urbanhabitat/Artboard 1 copy 3.png" alt="Urban Habitat slide 5" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="urbanhabitat/Artboard 1 copy 4.png" alt="Urban Habitat slide 6" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="urbanhabitat/Artboard 1 copy 6.png" alt="Urban Habitat slide 7" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="urbanhabitat/Artboard 1 copy 7.png" alt="Urban Habitat slide 8" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="urbanhabitat/Artboard 1 copy 8.png" alt="Urban Habitat slide 9" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="urbanhabitat/Artboard 1 copy 9.png" alt="Urban Habitat slide 10" class="gd-slide-img"></div>
     </div>
   </div>
   <div class="gd-slider-controls">
     <button class="gd-prev">←</button>
-    <span class="gd-count">1 / 4</span>
+    <span class="gd-count">1 / 10</span>
     <button class="gd-next">→</button>
   </div>
 </div>
@@ -197,14 +215,21 @@
   <p class="gd-section-desc">A studio for creative ventures and investments. Senior designer on a founder-led two-person creative team.</p>
   <div class="gd-slider">
     <div class="gd-slides">
-      <div class="gd-slide"><div class="gd-placeholder">Slide 1</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 2</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 3</div></div>
+      <div class="gd-slide"><img src="canard/Slide 4_3 - 30.jpg" alt="Canard slide 1" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="canard/Slide 4_3 - 29.jpg" alt="Canard slide 2" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="canard/Slide 4_3 - 31.jpg" alt="Canard slide 3" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="canard/original-8ec18155444ea3ca7256d6d8e910b18d-2.gif" alt="Canard slide 4" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="canard/LON02724 Large.jpeg" alt="Canard slide 5" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="canard/LON02737 Large.jpeg" alt="Canard slide 6" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="canard/LON02745 Large.jpeg" alt="Canard slide 7" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="canard/LON02749 Large.jpeg" alt="Canard slide 8" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="canard/Artboard 2@2x-100.jpg" alt="Canard slide 9" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="canard/Slide 4_3 - 32.jpg" alt="Canard slide 10" class="gd-slide-img"></div>
     </div>
   </div>
   <div class="gd-slider-controls">
     <button class="gd-prev">←</button>
-    <span class="gd-count">1 / 3</span>
+    <span class="gd-count">1 / 10</span>
     <button class="gd-next">→</button>
   </div>
 </div>
@@ -214,15 +239,27 @@
   <p class="gd-section-desc">Banh mi sandwiches served with a side of vibe. Built the brand from within Canard's creative team.</p>
   <div class="gd-slider">
     <div class="gd-slides">
-      <div class="gd-slide"><div class="gd-placeholder">Slide 1</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 2</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 3</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 4</div></div>
+      <div class="gd-slide"><img src="daikon/Slide 4_3 - 13.jpg" alt="Daikon slide 1" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="daikon/Slide 4_3 - 28.jpg" alt="Daikon slide 2" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="daikon/Slide 4_3 - 26.jpg" alt="Daikon slide 3" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="daikon/Slide 4_3 - 27.jpg" alt="Daikon slide 3" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="daikon/Slide 4_3 - 4.jpg" alt="Daikon slide 4" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="daikon/Slide 4_3 - 5.jpg" alt="Daikon slide 5" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="daikon/Slide 4_3 - 6.jpg" alt="Daikon slide 6" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="daikon/Slide 4_3 - 7.jpg" alt="Daikon slide 7" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="daikon/Slide 4_3 - 8.jpg" alt="Daikon slide 8" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="daikon/Slide 4_3 - 9.jpg" alt="Daikon slide 9" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="daikon/Slide 4_3 - 10.jpg" alt="Daikon slide 10" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="daikon/Slide 4_3 - 11.jpg" alt="Daikon slide 11" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="daikon/Slide 4_3 - 12.jpg" alt="Daikon slide 12" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="daikon/Slide 4_3 - 14.jpg" alt="Daikon slide 13" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="daikon/DSC03558 Large.jpeg" alt="Daikon slide 15" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="daikon/DSC03562 Large.jpeg" alt="Daikon slide 16" class="gd-slide-img"></div>
     </div>
   </div>
   <div class="gd-slider-controls">
     <button class="gd-prev">←</button>
-    <span class="gd-count">1 / 4</span>
+    <span class="gd-count">1 / 16</span>
     <button class="gd-next">→</button>
   </div>
 </div>
@@ -232,14 +269,18 @@
   <p class="gd-section-desc">A curated coffee experience. Brand work for a concept owned and operated by Canard.</p>
   <div class="gd-slider">
     <div class="gd-slides">
-      <div class="gd-slide"><div class="gd-placeholder">Slide 1</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 2</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 3</div></div>
+      <div class="gd-slide"><img src="alpinemodern/DSC03453 Large.jpeg" alt="Alpine Modern slide 1" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="alpinemodern/DSC03372 Large.jpeg" alt="Alpine Modern slide 2" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="alpinemodern/DSC03408 Large.jpeg" alt="Alpine Modern slide 3" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="alpinemodern/DSC03417 Large.jpeg" alt="Alpine Modern slide 4" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="alpinemodern/DSC03471 Large.jpeg" alt="Alpine Modern slide 5" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="alpinemodern/DSC03503 Large.jpeg" alt="Alpine Modern slide 6" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="alpinemodern/DSC03515 Large.jpeg" alt="Alpine Modern slide 7" class="gd-slide-img"></div>
     </div>
   </div>
   <div class="gd-slider-controls">
     <button class="gd-prev">←</button>
-    <span class="gd-count">1 / 3</span>
+    <span class="gd-count">1 / 7</span>
     <button class="gd-next">→</button>
   </div>
 </div>
@@ -249,22 +290,30 @@
   <p class="gd-section-desc">Wake up better. Packaging, photography, and design for a minimalist alarm clock.</p>
   <div class="gd-slider">
     <div class="gd-slides">
-      <div class="gd-slide"><div class="gd-placeholder">Slide 1</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 2</div></div>
-      <div class="gd-slide"><div class="gd-placeholder">Slide 3</div></div>
+      <div class="gd-slide"><img src="oneclock/LON02401 Large.jpeg" alt="Oneclock slide 1" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="oneclock/LON02329 Large.jpeg" alt="Oneclock slide 2" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="oneclock/LON02350 Large.jpeg" alt="Oneclock slide 3" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="oneclock/LON02369 Large.jpeg" alt="Oneclock slide 4" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="oneclock/LON02382 Large.jpeg" alt="Oneclock slide 5" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="oneclock/LON02397 Large.jpeg" alt="Oneclock slide 6" class="gd-slide-img"></div>
+      <div class="gd-slide"><img src="oneclock/LON02399 Large.jpeg" alt="Oneclock slide 7" class="gd-slide-img"></div>
     </div>
   </div>
   <div class="gd-slider-controls">
     <button class="gd-prev">←</button>
-    <span class="gd-count">1 / 3</span>
+    <span class="gd-count">1 / 7</span>
     <button class="gd-next">→</button>
   </div>
 </div>
+<div style="display:flex;flex-direction:column;align-items:center;padding:64px 0 48px;gap:0;">
+  <img src="smalltape.png" alt="" id="gdTapeBack" style="width:300px;cursor:pointer;">
+  <p style="font-size:11px;color:#555;margin:0;margin-top:-12px;">© 2026 JJJJUSTIN. All rights reserved.</p>
+</div>
 </div>
 </div>
 
 
-  <div style="position:fixed; bottom:32px; right:28px; pointer-events:none; z-index:10; width:300px; display:flex; flex-direction:column; align-items:center; gap:0;">
+  <div id="fixedTape" style="position:fixed; bottom:32px; right:28px; pointer-events:none; z-index:10; width:300px; display:flex; flex-direction:column; align-items:center; gap:0;">
     <img src="smalltape.png" alt="" style="width:100%;">
     <p style="font-size:11px; color:#555; margin:0; margin-top:-12px;">© 2026 JJJJUSTIN. All rights reserved.</p>
   </div>
@@ -274,23 +323,32 @@
     <div class="detail-inner">
       <button class="back-pill" id="empDetailBack">← Back to desktop</button>
       <div class="detail-hero">
-        <img src="ipodheader.jpg" alt="iPod with earbuds on yellow background">
+        <img src="empeethree/ipodheader.jpg" alt="iPod with earbuds on yellow background">
       </div>
       <h1 class="detail-headline">EMPEETHREE</h1>
       <p class="detail-intro">A desktop MP3 player built for people who own their music. No accounts, no streaming, no subscriptions — just your files, played well.</p>
-      <img src="empeethree-loading.gif" alt="EMPEETHREE" style="width:100%;border-radius:4px;margin-top:24px;margin-bottom:24px;">
+      <img src="empeethree/empeethree-loading.gif" alt="EMPEETHREE" style="width:100%;border-radius:4px;margin-top:24px;margin-bottom:24px;">
       <div class="detail-body">
         <p>EMPEETHREE started as a frustration with modern music players. Every app wants you to stream, subscribe, or surrender your library to the cloud. EMPEETHREE does none of that. It reads your local files, plays them without fuss, and gets out of the way.</p>
         <p>Built for macOS and Windows. Gapless playback, waveform scrubbing, keyboard-first controls. The interface is minimal by design — the music is the thing.</p>
         <p>Currently in development. More details coming soon.</p>
       </div>
-      <div class="detail-photos">
-        <div class="detail-photo"><img src="emp_1_icon.png" alt="EMPEETHREE icon"></div>
-        <div class="detail-photo"><img src="emp_2_search.png" alt="EMPEETHREE search"></div>
-        <div class="detail-photo"><img src="emp_3_shortcuts.png" alt="EMPEETHREE shortcuts"></div>
-        <div class="detail-photo"><img src="emp_4_fullapp.png" alt="EMPEETHREE full app"></div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <img src="empeethree/Slide 4_3 - 34.jpg" alt="EMPEETHREE" style="width:100%;border-radius:4px;">
+        <div class="detail-photos">
+          <div class="detail-photo"><img src="empeethree/emp_1_icon.png" alt="EMPEETHREE icon"></div>
+          <div class="detail-photo"><img src="empeethree/emp_2_search.png" alt="EMPEETHREE search"></div>
+          <div class="detail-photo"><img src="empeethree/emp_3_shortcuts.png" alt="EMPEETHREE shortcuts"></div>
+          <div class="detail-photo"><img src="empeethree/emp_4_fullapp.png" alt="EMPEETHREE full app"></div>
+        </div>
+        <img src="empeethree/Slide 4_3 - 35.jpg" alt="EMPEETHREE" style="width:100%;border-radius:4px;">
       </div>
     </div>
+    <div style="display:flex;flex-direction:column;align-items:center;padding:64px 0 48px;gap:0;">
+      <img src="smalltape.png" alt="" id="empTapeBack" style="width:300px;cursor:pointer;">
+      <p style="font-size:11px;color:#555;margin:0;margin-top:-12px;">© 2026 JJJJUSTIN. All rights reserved.</p>
+    </div>
+  </div>
   </div>
 
 <!-- OBSIDIAN DETAIL PAGE -->
@@ -300,7 +358,11 @@
     <h1 class="detail-headline">Obsidian Customization</h1>
     <p class="detail-intro">A heavily customized Obsidian vault. Weekly notes, custom templates, and dashboards built around how I actually think.</p>
     <div class="detail-body">
-      <img src="obsidian.png" alt="Obsidian Customization screenshot" style="width:100%;border-radius:4px;border:1px solid var(--border);margin-bottom:16px;">
+      <img src="obsidian.png" alt="Obsidian Customization screenshot" style="width:100%;border-radius:4px;border:1px solid var(--border);margin-top:24px;margin-bottom:16px;">
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;padding:64px 0 48px;gap:0;">
+      <img src="smalltape.png" alt="" id="obsTapeBack" style="width:300px;cursor:pointer;">
+      <p style="font-size:11px;color:#555;margin:0;margin-top:-12px;">© 2026 JJJJUSTIN. All rights reserved.</p>
     </div>
   </div>
 </div>

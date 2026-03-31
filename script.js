@@ -17,6 +17,10 @@ document.getElementById('empDetailBack').addEventListener('click', () => {
   document.getElementById('empDetail').classList.remove('visible');
 });
 
+document.getElementById('empTapeBack').addEventListener('click', () => {
+  document.getElementById('empDetail').classList.remove('visible');
+});
+
 // ── OBSIDIAN DETAIL ──
 function openObsidianDetail() {
   closeInfo();
@@ -27,6 +31,29 @@ document.getElementById('obsDetailBack').addEventListener('click', () => {
   document.getElementById('obsDetail').classList.remove('visible');
 });
 
+document.getElementById('obsTapeBack').addEventListener('click', () => {
+  document.getElementById('obsDetail').classList.remove('visible');
+});
+
+// ── HAMBURGER ──
+(function() {
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+  [
+    ['mobileInfoLink',    'infoLink'],
+    ['mobileDcLink',      'dcLink'],
+    ['mobileArchiveLink', 'archiveLink'],
+    ['mobileGdLink',      'gdLink'],
+  ].forEach(([mobileId, desktopId]) => {
+    document.getElementById(mobileId).addEventListener('click', e => {
+      e.preventDefault();
+      mobileNav.classList.remove('open');
+      document.getElementById(desktopId).click();
+    });
+  });
+})();
+
 // ── HOME (logo + site name) ──
 document.getElementById('homeLink').addEventListener('click', (e) => {
   e.preventDefault();
@@ -34,10 +61,12 @@ document.getElementById('homeLink').addEventListener('click', (e) => {
   document.getElementById('obsDetail').classList.remove('visible');
   document.getElementById('gdDetail').classList.remove('visible');
   closeInfo();
+  closeAllPanels();
 });
 
 // ── RANDOM ICON PLACEMENT ──
 (function() {
+  const isMobile = window.innerWidth <= 768;
   const icons = document.querySelectorAll('.icon');
   const dw = window.innerWidth;
   const dh = window.innerHeight;
@@ -58,22 +87,24 @@ document.getElementById('homeLink').addEventListener('click', (e) => {
     return blocked.some(b => rectsOverlap(x, y, w + pad, h + pad, b.x, b.y, b.w, b.h));
   }
 
-  // Position stickie2 randomly
+  // Position stickie2 randomly (desktop only)
   const s2 = document.getElementById('stickie2');
   const s2W = 180, s2H = 80;
   let s2x, s2y, attempts = 0;
-  const zoneX = dw * 0.15;
-  const zoneY = dh * 0.15;
-  const zoneW = dw * 0.70;
-  const zoneH = dh * 0.65;
-  do {
-    s2x = zoneX + Math.random() * (zoneW - s2W);
-    s2y = zoneY + Math.random() * (zoneH - s2H);
-    attempts++;
-  } while (overlapsAny(s2x, s2y, s2W, s2H) && attempts < 200);
-  blocked.push({ x: s2x - pad, y: s2y - pad, w: s2W + pad*2, h: s2H + pad*2 });
-  s2.style.left = Math.round(s2x) + 'px';
-  s2.style.top  = Math.round(s2y) + 'px';
+  const zoneX = isMobile ? 8              : dw * 0.15;
+  const zoneY = isMobile ? sr.bottom + 16 : dh * 0.15;
+  const zoneW = isMobile ? dw - 16        : dw * 0.70;
+  const zoneH = isMobile ? dh - zoneY - 60 : dh * 0.65;
+  if (!isMobile) {
+    do {
+      s2x = zoneX + Math.random() * (zoneW - s2W);
+      s2y = zoneY + Math.random() * (zoneH - s2H);
+      attempts++;
+    } while (overlapsAny(s2x, s2y, s2W, s2H) && attempts < 200);
+    blocked.push({ x: s2x - pad, y: s2y - pad, w: s2W + pad*2, h: s2H + pad*2 });
+    s2.style.left = Math.round(s2x) + 'px';
+    s2.style.top  = Math.round(s2y) + 'px';
+  }
 
   // Position icons randomly
   icons.forEach(icon => {
@@ -98,6 +129,10 @@ document.getElementById('gdLink').addEventListener('click', () => {
 });
 
 document.getElementById('gdDetailBack').addEventListener('click', () => {
+  document.getElementById('gdDetail').classList.remove('visible');
+});
+
+document.getElementById('gdTapeBack').addEventListener('click', () => {
   document.getElementById('gdDetail').classList.remove('visible');
 });
 
@@ -207,6 +242,9 @@ document.querySelectorAll('.draggable').forEach(el => {
 
 // ── INFO PANEL ──
 function toggleInfo(id, iconEl) {
+  if (window.innerWidth <= 768) {
+    if (id === 'td')  { /* fall through to info panel */ }
+  }
   if (activeIcon === iconEl && panel.classList.contains('visible')) { closeInfo(); return; }
   if (activeIcon && activeIcon !== iconEl) activeIcon.classList.remove('selected');
   iconEl.classList.add('selected');
@@ -240,15 +278,6 @@ function toggleInfo(id, iconEl) {
 
   const linkWrap = document.getElementById('p-link-wrap');
   const linkEl   = document.getElementById('p-link');
-  const ssWrap   = document.getElementById('p-screenshot-wrap');
-  const ssToggle = document.getElementById('p-screenshot-toggle');
-  const ssImg    = document.getElementById('p-screenshot-img');
-
-  ssWrap.style.display = 'none';
-  ssImg.style.display  = 'none';
-  ssToggle.textContent = '▸ See screenshot';
-  ssImg.src            = 'obsidian.png';
-
   if (d.linkHref) {
     linkEl.innerHTML       = `<a href="${d.linkHref}" target="_blank" class="info-link">${d.linkLabel}</a>`;
     linkWrap.style.display = 'block';
@@ -297,6 +326,7 @@ function closeInfo() {
 document.getElementById('closeBtn').addEventListener('click', closeInfo);
 document.getElementById('desktop').addEventListener('mousedown', e => {
   if (!e.target.closest('.icon') && !e.target.closest('.info-panel')) closeInfo();
+  closeAllPanels();
 });
 
 // ── CLOCK (America/Denver) ──
@@ -334,6 +364,14 @@ tick(); setInterval(tick, 1000);
   }
 })();
 
+// ── PANEL MANAGER ──
+function closeAllPanels() {
+  document.querySelectorAll('.bio-panel, .bio-overlay').forEach(el => el.classList.remove('visible'));
+  document.querySelectorAll('.dc-panel, .dc-overlay').forEach(el => el.classList.remove('visible'));
+  document.querySelectorAll('.archive-panel, .archive-overlay').forEach(el => el.classList.remove('visible'));
+  ['infoLink', 'dcLink', 'archiveLink'].forEach(id => document.getElementById(id).classList.remove('active'));
+}
+
 // ── DON'T COAST PANEL ──
 (function() {
   const dcOverlay = document.createElement('div');
@@ -361,6 +399,21 @@ tick(); setInterval(tick, 1000);
         <span class="dc-tag">Tour Divide</span>
         <span class="dc-tag">Boulder, CO</span>
       </div>
+      <div class="dc-video">
+        <iframe src="https://www.youtube.com/embed/pzGovAmOSmo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="dc-grid-header">
+        <div class="dc-grid-title">Tour Divide State Stamps</div>
+        <div class="dc-grid-sub">A series of digital designs depicting the landscape of each state the route passes through — Montana, Idaho, Wyoming, Colorado, and New Mexico.</div>
+      </div>
+      <div class="dc-grid">
+        <img src="tourdividesupply/Artboard 4 copy 3-100.jpg" alt="">
+        <img src="tourdividesupply/Artboard 4 copy 4-100.jpg" alt="">
+        <img src="tourdividesupply/Artboard 4 copy 5-100.jpg" alt="">
+        <img src="tourdividesupply/Artboard 4 copy 6-100.jpg" alt="">
+        <img src="tourdividesupply/Artboard 4 copy 7-100.jpg" alt="">
+        <img src="tourdividesupply/Artboard 4 copy 8-100.jpg" alt="">
+      </div>
     </div>`;
 
   document.body.appendChild(dcOverlay);
@@ -368,6 +421,7 @@ tick(); setInterval(tick, 1000);
 
   function openDC(e) {
     e.preventDefault();
+    closeAllPanels();
     dcPanel.classList.add('visible');
     dcOverlay.classList.add('visible');
     document.getElementById('dcLink').classList.add('active');
@@ -423,9 +477,9 @@ tick(); setInterval(tick, 1000);
         <div class="bio-credits-overlay">
           <div class="bio-credits-text">
             <span class="bio-credits-title">Website Credits:</span>
-            <span>Set in Inconsolata, Vollkorn & Work Sans</span>
+            <span>Type set in Inconsolata, Vollkorn & Work Sans</span>
             <span>Photography by Elliot Whitehead & Lucas Winzenburg</span>
-            <span>Typed with OLKB x Drop Planck · Gateron Milky Whites</span>
+            <span>Typed on an OLKB x Drop Planck · Gateron Milky Whites</span>
           </div>
         </div>
       </div>
@@ -436,6 +490,7 @@ tick(); setInterval(tick, 1000);
 
   function openBio(e) {
     e.preventDefault();
+    closeAllPanels();
     bioPanel.classList.add('visible');
     bioOverlay.classList.add('visible');
     document.getElementById('infoLink').classList.add('active');
@@ -498,6 +553,10 @@ tick(); setInterval(tick, 1000);
     { src: 'rbr_Artboard+8+copy.png' },
     { src: 'rbr_Artboard+8+copy+2.png' },
     { src: 'Untitled-3.png' },
+    { src: '376f65e65908ba62b9234f69a56079a7.jpg' },
+    { src: '68e15943f693a121620ae2dc9995513c.jpg' },
+    { src: '9902d5495666672995c6b7b3464ae973.png' },
+    { src: 'Screen Shot 2021-08-11 at 11.40.07 AM.jpg' },
   ];
 
   const overlay = document.createElement('div');
@@ -512,8 +571,8 @@ tick(); setInterval(tick, 1000);
       <div class="wb wb--close" id="archiveClose"></div>
       <span class="archive-titlebar-name">Archive</span>
     </div>
-    <p style="font-size:13px;line-height:1.3;color:#888;padding:12px 16px;max-width:500px;margin:0;flex-shrink:0;">This is just a collection of everything I've ever made.</p>
     <div class="archive-scroll" id="archiveScroll">
+      <div style="padding:48px 16px 40px;text-align:center;width:100%;box-sizing:border-box;"><div style="display:inline-block;text-align:left;"><p style="font-size:26px;font-weight:bold;color:#e8e4dc;margin:0 0 6px 0;line-height:1.2;">"DON'T STOP THINKING ABOUT TOMORROW."</p><p style="font-size:13px;color:#888;margin:0;letter-spacing:0.08em;text-align:right;">— Fleetwood Mac</p></div></div>
       <div class="masonry" id="masonryGrid" style="padding:16px;"></div>
     </div>`;
 
@@ -530,6 +589,7 @@ tick(); setInterval(tick, 1000);
 
   function openArchive(e) {
     e.preventDefault();
+    closeAllPanels();
     panel.classList.add('visible');
     overlay.classList.add('visible');
     document.getElementById('archiveLink').classList.add('active');
@@ -562,4 +622,7 @@ document.querySelectorAll('.gd-slider').forEach(slider => {
 
   controls.querySelector('.gd-prev').addEventListener('click', () => goTo(current - 1));
   controls.querySelector('.gd-next').addEventListener('click', () => goTo(current + 1));
+  slider.querySelectorAll('.gd-slide-img').forEach(img => {
+    img.addEventListener('click', () => goTo(current + 1));
+  });
 });
