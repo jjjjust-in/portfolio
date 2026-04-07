@@ -202,6 +202,25 @@
   margin-bottom: 10px;
 }
 
+.gd-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.gd-tag {
+  display: inline-block;
+  font-family: 'Inconsolata', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 3px 8px;
+}
+
 .gd-section-desc {
   font-size: 13px;
   line-height: 1.75;

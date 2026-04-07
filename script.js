@@ -404,7 +404,7 @@ function closeAllPanels() {
       </div>
       <div class="dc-grid-header">
         <div class="dc-grid-title">Tour Divide State Stamps</div>
-        <div class="dc-grid-sub">A series of digital designs depicting the landscape of each state the route passes through — Montana, Idaho, Wyoming, Colorado, and New Mexico.</div>
+        <div class="dc-grid-sub">A series of digital designs depicting the landscape of each state and province the route passes through: Canada, Montana, Idaho, Wyoming, Colorado, and New Mexico.</div>
       </div>
       <div class="dc-grid">
         <img src="tourdividesupply/Artboard 4 copy 3-100.jpg" alt="">
