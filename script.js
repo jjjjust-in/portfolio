@@ -1,7 +1,6 @@
 const projects = {
   td:  { title:'Tour Divide Supply', kind:'Software', name:'Tour Divide Supply', desc:'Tour Divide Supply is a set of note-taking tools built for the Tour Divide, designed to capture ideas, decisions, and details in motion. It also serves as a creative outlet, translating the experience of the route into graphics, systems, and artifacts.', platform:'iOS · Android', status:'In development', linkLabel:'Visit tourdividesupply.com →', linkHref:'https://tourdividesupply.com', img:'tourdividesupply.jpeg' },
-  mp3: { title:'EMPEETHREE', kind:'Software', name:'EMPEETHREE', desc:'A desktop MP3 player. Plays your local files. No subscriptions, no cloud, no accounts.', platform:'macOS · Windows', status:'In development', linkLabel:'See project →', linkAction:'empeethree-detail', img:'empeethree.jpeg' },
-  obs: { title:'Obsidian Customization', kind:'System', name:'Obsidian Customization', desc:'A heavily customized Obsidian vault. Weekly notes, custom templates, and dashboards built around how I actually think.', platform:'Obsidian', status:'Personal project', headerBg:'#8B5CF6', linkLabel:'See project →', linkAction:'obs-detail' }
+  mp3: { title:'EMPEETHREE', kind:'Software', name:'EMPEETHREE', desc:'A desktop MP3 player. Plays your local files. No subscriptions, no cloud, no accounts.', platform:'macOS · Windows', status:'In development', linkLabel:'See project →', linkAction:'empeethree-detail', img:'empeethree.jpeg' }
 };
 
 let activeIcon = null;
@@ -21,44 +20,10 @@ document.getElementById('empTapeBack').addEventListener('click', () => {
   document.getElementById('empDetail').classList.remove('visible');
 });
 
-// ── OBSIDIAN DETAIL ──
-function openObsidianDetail() {
-  closeInfo();
-  document.getElementById('obsDetail').classList.add('visible');
-}
-
-document.getElementById('obsDetailBack').addEventListener('click', () => {
-  document.getElementById('obsDetail').classList.remove('visible');
-});
-
-document.getElementById('obsTapeBack').addEventListener('click', () => {
-  document.getElementById('obsDetail').classList.remove('visible');
-});
-
-// ── HAMBURGER ──
-(function() {
-  const hamburger = document.getElementById('hamburger');
-  const mobileNav = document.getElementById('mobileNav');
-  hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
-  [
-    ['mobileInfoLink',    'infoLink'],
-    ['mobileDcLink',      'dcLink'],
-    ['mobileArchiveLink', 'archiveLink'],
-    ['mobileGdLink',      'gdLink'],
-  ].forEach(([mobileId, desktopId]) => {
-    document.getElementById(mobileId).addEventListener('click', e => {
-      e.preventDefault();
-      mobileNav.classList.remove('open');
-      document.getElementById(desktopId).click();
-    });
-  });
-})();
-
 // ── HOME (logo + site name) ──
 document.getElementById('homeLink').addEventListener('click', (e) => {
   e.preventDefault();
   document.getElementById('empDetail').classList.remove('visible');
-  document.getElementById('obsDetail').classList.remove('visible');
   document.getElementById('gdDetail').classList.remove('visible');
   closeInfo();
   closeAllPanels();
@@ -79,6 +44,12 @@ document.getElementById('homeLink').addEventListener('click', (e) => {
     { x: sr.left  - pad, y: sr.top  - pad, w: sr.width  + pad*2, h: sr.height  + pad*2 }
   ];
 
+  const sl = document.getElementById('stickieLinks');
+  if (sl) {
+    const slr = sl.getBoundingClientRect();
+    blocked.push({ x: slr.left - pad, y: slr.top - pad, w: slr.width + pad*2, h: slr.height + pad*2 });
+  }
+
   function rectsOverlap(ax, ay, aw, ah, bx, by, bw, bh) {
     return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
   }
@@ -87,7 +58,7 @@ document.getElementById('homeLink').addEventListener('click', (e) => {
     return blocked.some(b => rectsOverlap(x, y, w + pad, h + pad, b.x, b.y, b.w, b.h));
   }
 
-  // Position stickie2 randomly (desktop only)
+  // Position stickie2 randomly
   const s2 = document.getElementById('stickie2');
   const s2W = 180, s2H = 80;
   let s2x, s2y, attempts = 0;
@@ -95,16 +66,14 @@ document.getElementById('homeLink').addEventListener('click', (e) => {
   const zoneY = isMobile ? sr.bottom + 16 : dh * 0.15;
   const zoneW = isMobile ? dw - 16        : dw * 0.70;
   const zoneH = isMobile ? dh - zoneY - 60 : dh * 0.65;
-  if (!isMobile) {
-    do {
-      s2x = zoneX + Math.random() * (zoneW - s2W);
-      s2y = zoneY + Math.random() * (zoneH - s2H);
-      attempts++;
-    } while (overlapsAny(s2x, s2y, s2W, s2H) && attempts < 200);
-    blocked.push({ x: s2x - pad, y: s2y - pad, w: s2W + pad*2, h: s2H + pad*2 });
-    s2.style.left = Math.round(s2x) + 'px';
-    s2.style.top  = Math.round(s2y) + 'px';
-  }
+  do {
+    s2x = zoneX + Math.random() * (zoneW - s2W);
+    s2y = zoneY + Math.random() * (zoneH - s2H);
+    attempts++;
+  } while (overlapsAny(s2x, s2y, s2W, s2H) && attempts < 200);
+  blocked.push({ x: s2x - pad, y: s2y - pad, w: s2W + pad*2, h: s2H + pad*2 });
+  s2.style.left = Math.round(s2x) + 'px';
+  s2.style.top  = Math.round(s2y) + 'px';
 
   // Position icons randomly
   icons.forEach(icon => {
@@ -124,7 +93,6 @@ document.getElementById('homeLink').addEventListener('click', (e) => {
 // ── GD PAGE ──
 document.getElementById('gdLink').addEventListener('click', () => {
   document.getElementById('empDetail').classList.remove('visible');
-  document.getElementById('obsDetail').classList.remove('visible');
   document.getElementById('gdDetail').classList.add('visible');
 });
 
@@ -288,13 +256,6 @@ function toggleInfo(id, iconEl) {
       e.stopPropagation();
       openEmpeethreeDetail();
     });
-  } else if (d.linkAction === 'obs-detail') {
-    linkEl.innerHTML       = `<span class="info-link" id="obs-detail-btn">${d.linkLabel}</span>`;
-    linkWrap.style.display = 'block';
-    document.getElementById('obs-detail-btn').addEventListener('click', (e) => {
-      e.stopPropagation();
-      openObsidianDetail();
-    });
   } else {
     linkWrap.style.display = 'none';
   }
@@ -328,41 +289,6 @@ document.getElementById('desktop').addEventListener('mousedown', e => {
   if (!e.target.closest('.icon') && !e.target.closest('.info-panel')) closeInfo();
   closeAllPanels();
 });
-
-// ── CLOCK (America/Denver) ──
-function tick() {
-  const n    = new Date();
-  const time = n.toLocaleTimeString('en-GB', { timeZone: 'America/Denver', hour: '2-digit', minute: '2-digit' });
-  const day  = n.toLocaleDateString('en-US', { timeZone: 'America/Denver', weekday: 'short', month: 'short', day: 'numeric' });
-  document.getElementById('clock').textContent = day + '  ' + time;
-}
-tick(); setInterval(tick, 1000);
-
-// ── WEATHER (Boulder, CO) ──
-(async function() {
-  const weatherEl = document.getElementById('weatherDisplay');
-  weatherEl.textContent = '…';
-  const wmoIcon = {
-    0:'☀️', 1:'🌤', 2:'⛅', 3:'☁️',
-    45:'🌫', 48:'🌫',
-    51:'🌦', 53:'🌦', 55:'🌧',
-    61:'🌧', 63:'🌧', 65:'🌧',
-    71:'🌨', 73:'🌨', 75:'❄️', 77:'❄️',
-    80:'🌦', 81:'🌧', 82:'⛈',
-    85:'🌨', 86:'❄️', 95:'⛈', 96:'⛈', 99:'⛈'
-  };
-  try {
-    const res  = await fetch('https://api.open-meteo.com/v1/forecast?latitude=40.015&longitude=-105.2705&current_weather=true&temperature_unit=fahrenheit&wind_speed_unit=mph');
-    if (!res.ok) throw new Error('bad response');
-    const data = await res.json();
-    const cw   = data.current_weather;
-    const icon = wmoIcon[cw.weathercode] ?? '🌡';
-    const temp = Math.round(cw.temperature);
-    weatherEl.textContent = temp + '°F';
-  } catch(e) {
-    weatherEl.textContent = '';
-  }
-})();
 
 // ── PANEL MANAGER ──
 function closeAllPanels() {
