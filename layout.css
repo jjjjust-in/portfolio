@@ -42,12 +42,12 @@
 
 .stickie-link {
   font-size: 14px;
-  color: var(--muted);
+  color: var(--fg);
   letter-spacing: 0.04em;
   text-decoration: none;
   transition: color 0.15s;
 }
-.stickie-link:hover { color: var(--fg); }
+.stickie-link:hover { color: var(--fg); text-decoration: underline; }
 .stickie-link.active { color: var(--fg); border-bottom: 1px solid var(--fg); }
 
 /* ── MOBILE LAYOUT ── */

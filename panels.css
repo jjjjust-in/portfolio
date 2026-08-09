@@ -4,7 +4,6 @@
 .detail-page {
   position: fixed;
   inset: 0;
-  top: 36px;
   background: var(--bg);
   z-index: 600;
   overflow-y: auto;
@@ -125,7 +124,6 @@
 .gd-page {
   position: fixed;
   inset: 0;
-  top: 36px;
   background: var(--bg);
   z-index: 600;
   overflow-y: auto;
@@ -724,4 +722,268 @@
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, -50%);
+}
+
+/* ── RESUME DETAIL PAGE ── */
+.resume-inner {
+  max-width: 900px;
+}
+
+.resume-paper {
+  position: relative;
+  background: #fff;
+  padding: 64px 56px;
+  box-shadow:
+    0 1px 1px rgba(0,0,0,0.03),
+    0 2px 6px rgba(0,0,0,0.06),
+    0 24px 48px -12px rgba(0,0,0,0.18);
+}
+
+.resume-download-below {
+  text-align: center;
+  max-width: 900px;
+  margin: 24px auto 0;
+}
+.resume-download-tab {
+  display: inline-block;
+  background: #F2B705;
+  color: #141414 !important;
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 12px 22px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  text-decoration: none !important;
+}
+.resume-download-tab:hover { background: #141414; color: #F2B705 !important; }
+
+.resume-dot {
+  color: #F2B705;
+  font-weight: 700;
+  margin: 0 8px;
+  font-size: 0.75em;
+  vertical-align: middle;
+}
+
+.resume-logo-mark {
+  width: 30px;
+  color: var(--fg);
+  margin-bottom: 20px;
+}
+.resume-logo-mark svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.resume-hero { padding-bottom: 32px; }
+
+.resume-hero h1 {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 0.98;
+  margin: 0;
+  color: #F2B705;
+  letter-spacing: -0.025em;
+}
+
+.resume-role {
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--fg);
+  margin-top: 8px;
+  font-family: 'Inconsolata', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.resume-label {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 800;
+  font-size: 17px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--fg);
+  margin: 0 0 20px;
+}
+
+.resume-section {
+  padding: 30px 0;
+}
+
+.resume-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.resume-paper p {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  margin: 0 0 16px;
+}
+
+.resume-meta-list dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 9px 18px;
+  margin: 0;
+  font-family: 'Inconsolata', monospace;
+}
+.resume-meta-list dt {
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.resume-meta-list dd {
+  margin: 0;
+  color: var(--fg);
+  font-size: 13.5px;
+  font-weight: 500;
+}
+.resume-meta-list a { color: var(--fg); text-decoration: none; }
+.resume-meta-list a:hover { text-decoration: underline; }
+
+.resume-skills-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'Work Sans', sans-serif;
+}
+.resume-skills-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 14px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+.resume-skills-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #F2B705;
+}
+
+.resume-stat-big {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 200;
+  font-size: clamp(52px, 7vw, 96px);
+  line-height: 0.9;
+  color: #F2B705;
+  margin: 0;
+}
+.resume-stat-caption {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 600;
+  color: var(--fg);
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 10px;
+}
+
+.resume-job {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  font-family: 'Work Sans', sans-serif;
+}
+.resume-job:first-of-type { border-top: 1px solid var(--border); }
+.resume-job-title { font-weight: 700; color: var(--fg); font-size: 15.5px; letter-spacing: -0.01em; }
+.resume-job-company { color: var(--fg); font-weight: 400; font-size: 15.5px; letter-spacing: -0.01em; }
+.resume-job-dates {
+  font-family: 'Inconsolata', monospace;
+  color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-align: right;
+}
+.resume-job-location {
+  grid-column: 1 / -1;
+  font-family: 'Inconsolata', monospace;
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: -3px;
+}
+
+.resume-edu-degree {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 18px;
+  color: var(--fg);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px;
+}
+.resume-edu-meta {
+  font-family: 'Inconsolata', monospace;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.resume-footer { padding-top: 30px; }
+.resume-foot-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 28px;
+}
+.resume-footer h3 {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 200;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+  color: var(--fg);
+}
+.resume-foot-note {
+  font-family: 'Work Sans', sans-serif;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: -0.01em;
+  max-width: 32ch;
+  margin: 0;
+}
+.resume-foot-col-label {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.resume-foot-col a {
+  display: block;
+  font-family: 'Inconsolata', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg);
+  text-decoration: none;
+  margin-bottom: 7px;
+}
+.resume-foot-col a:hover { text-decoration: underline; }
+
+@media (max-width: 760px) {
+  .resume-paper { padding: 48px 22px 36px; }
+  .resume-grid-2 { grid-template-columns: 1fr; gap: 26px; }
+  .resume-job { grid-template-columns: 1fr; }
+  .resume-job-dates { text-align: left; }
+  .resume-foot-grid { grid-template-columns: 1fr; }
 }

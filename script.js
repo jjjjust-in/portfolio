@@ -1,6 +1,7 @@
 const projects = {
   td:  { title:'Tour Divide Supply', kind:'Software', name:'Tour Divide Supply', desc:'Tour Divide Supply is a set of note-taking tools built for the Tour Divide, designed to capture ideas, decisions, and details in motion. It also serves as a creative outlet, translating the experience of the route into graphics, systems, and artifacts.', platform:'iOS · Android', status:'In development', linkLabel:'Visit tourdividesupply.com →', linkHref:'https://tourdividesupply.com', img:'tourdividesupply.jpeg' },
-  mp3: { title:'EMPEETHREE', kind:'Software', name:'EMPEETHREE', desc:'A desktop MP3 player. Plays your local files. No subscriptions, no cloud, no accounts.', platform:'macOS · Windows', status:'In development', linkLabel:'See project →', linkAction:'empeethree-detail', img:'empeethree.jpeg' }
+  mp3: { title:'EMPEETHREE', kind:'Software', name:'EMPEETHREE', desc:'A desktop MP3 player. Plays your local files. No subscriptions, no cloud, no accounts.', platform:'macOS · Windows', status:'In development', linkLabel:'See project →', linkAction:'empeethree-detail', img:'empeethree.jpeg' },
+  dc:  { title:"Don't Coast", kind:'Personal Project', name:"Don't Coast", desc:'A personal project built around forward motion, as much a creative pursuit as it is a physical one — cycling, the Tour Divide, and the brand collaborations that come with it.', platform:'Writing · Photo · Video', status:'Ongoing', linkLabel:'See project →', linkAction:'dc-detail', img:'dontcoast.jpeg' }
 };
 
 let activeIcon = null;
@@ -18,15 +19,6 @@ document.getElementById('empDetailBack').addEventListener('click', () => {
 
 document.getElementById('empTapeBack').addEventListener('click', () => {
   document.getElementById('empDetail').classList.remove('visible');
-});
-
-// ── HOME (logo + site name) ──
-document.getElementById('homeLink').addEventListener('click', (e) => {
-  e.preventDefault();
-  document.getElementById('empDetail').classList.remove('visible');
-  document.getElementById('gdDetail').classList.remove('visible');
-  closeInfo();
-  closeAllPanels();
 });
 
 // ── RANDOM ICON PLACEMENT ──
@@ -110,6 +102,24 @@ document.querySelectorAll('.gd-nav-link').forEach(a => {
     const target = document.querySelector(a.getAttribute('href'));
     if (target) target.scrollIntoView({ behavior: 'smooth' });
   });
+});
+
+// ── RESUME PAGE ──
+document.getElementById('resumeLink').addEventListener('click', (e) => {
+  e.preventDefault();
+  closeInfo();
+  closeAllPanels();
+  document.getElementById('empDetail').classList.remove('visible');
+  document.getElementById('gdDetail').classList.remove('visible');
+  document.getElementById('resumeDetail').classList.add('visible');
+});
+
+document.getElementById('resumeDetailBack').addEventListener('click', () => {
+  document.getElementById('resumeDetail').classList.remove('visible');
+});
+
+document.getElementById('resumeTapeBack').addEventListener('click', () => {
+  document.getElementById('resumeDetail').classList.remove('visible');
 });
 
 
@@ -256,6 +266,14 @@ function toggleInfo(id, iconEl) {
       e.stopPropagation();
       openEmpeethreeDetail();
     });
+  } else if (d.linkAction === 'dc-detail') {
+    linkEl.innerHTML       = `<span class="info-link" id="dc-detail-btn">${d.linkLabel}</span>`;
+    linkWrap.style.display = 'block';
+    document.getElementById('dc-detail-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeInfo();
+      window.openDontCoast();
+    });
   } else {
     linkWrap.style.display = 'none';
   }
@@ -295,7 +313,7 @@ function closeAllPanels() {
   document.querySelectorAll('.bio-panel, .bio-overlay').forEach(el => el.classList.remove('visible'));
   document.querySelectorAll('.dc-panel, .dc-overlay').forEach(el => el.classList.remove('visible'));
   document.querySelectorAll('.archive-panel, .archive-overlay').forEach(el => el.classList.remove('visible'));
-  ['infoLink', 'dcLink', 'archiveLink'].forEach(id => document.getElementById(id).classList.remove('active'));
+  ['infoLink', 'archiveLink'].forEach(id => document.getElementById(id).classList.remove('active'));
 }
 
 // ── DON'T COAST PANEL ──
@@ -346,20 +364,19 @@ function closeAllPanels() {
   document.body.appendChild(dcPanel);
 
   function openDC(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     closeAllPanels();
     dcPanel.classList.add('visible');
     dcOverlay.classList.add('visible');
-    document.getElementById('dcLink').classList.add('active');
   }
 
   function closeDC() {
     dcPanel.classList.remove('visible');
     dcOverlay.classList.remove('visible');
-    document.getElementById('dcLink').classList.remove('active');
   }
 
-  document.getElementById('dcLink').addEventListener('click', openDC);
+  window.openDontCoast = openDC;
+
   dcPanel.querySelector('#dcClose').addEventListener('click', closeDC);
   dcOverlay.addEventListener('click', closeDC);
 })();
