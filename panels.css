@@ -142,7 +142,7 @@
 }
 
 .gd-inner {
-  max-width: 680px;
+  max-width: 1024px;
   margin: 0 auto;
   padding: 0 32px 120px;
 }
@@ -224,12 +224,14 @@
   line-height: 1.75;
   color: #666;
   margin-bottom: 20px;
+  max-width: 616px;
 }
 
 .gd-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
+  width: 100%;
 }
 
 .gd-placeholder {
@@ -272,6 +274,7 @@
 .gd-slider {
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .gd-slides {
@@ -294,6 +297,7 @@
   border-bottom: 1px solid var(--border);
   position: relative;
   z-index: 1;
+  width: 100%;
 }
 
 .gd-prev, .gd-next {
