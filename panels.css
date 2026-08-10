@@ -270,34 +270,31 @@
 
 .gd-nav-link:hover { color: var(--fg); border-color: var(--fg); }
 
-/* ── GD SLIDER ── */
+/* ── GD SLIDER (long-scroll mockup: stack all slides instead of paging) ── */
 .gd-slider {
   position: relative;
   overflow: hidden;
   width: 100%;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--border);
 }
 
 .gd-slides {
   display: flex;
-  transition: transform 0.3s ease;
+  flex-direction: column;
+  gap: 12px;
+  transform: none !important;
 }
 
 .gd-slide {
-  min-width: 100%;
+  width: 100%;
+  min-width: 0;
   aspect-ratio: 4/3;
   overflow: hidden;
 }
 
 .gd-slider-controls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 10px;
-  padding-bottom: 64px;
-  border-bottom: 1px solid var(--border);
-  position: relative;
-  z-index: 1;
-  width: 100%;
+  display: none;
 }
 
 .gd-prev, .gd-next {
@@ -656,11 +653,9 @@
 .archive-scroll::-webkit-scrollbar-thumb { background: #444; border-radius: 3px; }
 
 .masonry {
-  columns: 3;
+  columns: 2;
   column-gap: 10px;
 }
-
-@media (max-width: 560px) { .masonry { columns: 2; } }
 
 .masonry-item {
   break-inside: avoid;
