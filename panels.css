@@ -756,8 +756,9 @@
   padding: 12px 22px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.1);
   text-decoration: none !important;
+  transition: background 0.15s;
 }
-.resume-download-tab:hover { background: #141414; color: #F2B705 !important; }
+.resume-download-tab:hover { background: #D6A300; }
 
 .resume-dot {
   color: #F2B705;
@@ -922,6 +923,43 @@
   color: var(--muted);
   font-size: 12px;
   margin-top: -3px;
+}
+
+.resume-job-more {
+  display: none;
+}
+.resume-job-more.expanded {
+  display: block;
+}
+.resume-job-more .resume-job:first-of-type {
+  border-top: none;
+}
+
+.resume-view-all-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 0;
+  padding: 14px 0;
+  background: none;
+  border: none;
+  font-family: 'Inconsolata', monospace;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #F2B705;
+  cursor: pointer;
+}
+.resume-view-all-arrow {
+  color: #F2B705;
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+.resume-view-all-btn.expanded .resume-view-all-arrow {
+  transform: rotate(180deg);
 }
 
 .resume-edu-degree {

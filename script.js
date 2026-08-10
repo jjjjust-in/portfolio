@@ -52,7 +52,7 @@ document.getElementById('empTapeBack').addEventListener('click', () => {
 
   // Position stickie2 randomly
   const s2 = document.getElementById('stickie2');
-  const s2W = 180, s2H = 80;
+  const s2W = 240, s2H = 300;
   let s2x, s2y, attempts = 0;
   const zoneX = isMobile ? 8              : dw * 0.15;
   const zoneY = isMobile ? sr.bottom + 16 : dh * 0.15;
@@ -81,6 +81,32 @@ document.getElementById('empTapeBack').addEventListener('click', () => {
   });
 })();
 
+
+// ── SELECTED WORK HOVER PREVIEW ──
+(function () {
+  const stickie2 = document.getElementById('stickie2');
+  const imgs = document.querySelectorAll('#stickie2Preview .stickie-2-preview-img');
+  let idx = 0;
+  let timer = null;
+
+  function showNext() {
+    imgs[idx].classList.remove('active');
+    idx = (idx + 1) % imgs.length;
+    imgs[idx].classList.add('active');
+  }
+
+  stickie2.addEventListener('mouseenter', () => {
+    if (timer) return;
+    timer = setInterval(showNext, 550);
+  });
+
+  stickie2.addEventListener('mouseleave', () => {
+    clearInterval(timer);
+    timer = null;
+    imgs.forEach((img, i) => img.classList.toggle('active', i === 0));
+    idx = 0;
+  });
+})();
 
 // ── GD PAGE ──
 document.getElementById('gdLink').addEventListener('click', () => {
@@ -121,6 +147,19 @@ document.getElementById('resumeDetailBack').addEventListener('click', () => {
 document.getElementById('resumeTapeBack').addEventListener('click', () => {
   document.getElementById('resumeDetail').classList.remove('visible');
 });
+
+(function () {
+  const btn = document.getElementById('resumeViewAllBtn');
+  const more = document.getElementById('resumeJobMore');
+  const label = btn.querySelector('.resume-view-all-label');
+  const defaultLabel = 'View All';
+
+  btn.addEventListener('click', () => {
+    const expanded = more.classList.toggle('expanded');
+    btn.classList.toggle('expanded', expanded);
+    label.textContent = expanded ? 'Show Less' : defaultLabel;
+  });
+})();
 
 
 // ── ICON DRAG ──
