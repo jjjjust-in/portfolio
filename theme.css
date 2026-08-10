@@ -3,8 +3,15 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
+  /* brand palette, sampled from the JJJJ self-portrait illustration */
+  --brand-gold: #F0A503;
+  --brand-gold-dark: #D29500;
+  --brand-blue: #6C8AA8;
+  --brand-rust: #C23705;
+  --brand-ink: #241A18;
+
   --bg: #ece9e3;
-  --fg: #1c1c1c;
+  --fg: var(--brand-ink);
   --muted: #888;
   --border: #bfbab0;
   --win-bg: #1e1e1e;

@@ -176,7 +176,7 @@
   line-height: 1;
   opacity: 1;
   transition: opacity 0.15s ease;
-  transform: translateY(8px);
+  transform: translateY(4px);
 }
 
 .stickie-2:hover .stickie-2-emoji {
