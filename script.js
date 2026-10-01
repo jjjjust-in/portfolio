@@ -1,25 +1,110 @@
-const projects = {
-  td:  { title:'Tour Divide Supply', kind:'Software', name:'Tour Divide Supply', desc:'Tour Divide Supply is a set of note-taking tools built for the Tour Divide, designed to capture ideas, decisions, and details in motion. It also serves as a creative outlet, translating the experience of the route into graphics, systems, and artifacts.', platform:'iOS · Android', status:'In development', linkLabel:'Visit tourdividesupply.com →', linkHref:'https://tourdividesupply.com', img:'tourdividesupply.jpeg' },
-  mp3: { title:'EMPEETHREE', kind:'Software', name:'EMPEETHREE', desc:'A desktop MP3 player. Plays your local files. No subscriptions, no cloud, no accounts.', platform:'macOS · Windows', status:'In development', linkLabel:'See project →', linkAction:'empeethree-detail', img:'empeethree.jpeg' },
-  dc:  { title:"Don't Coast", kind:'Personal Project', name:"Don't Coast", desc:'A personal project built around forward motion, as much a creative pursuit as it is a physical one — cycling, the Tour Divide, and the brand collaborations that come with it.', platform:'Writing · Photo · Video', status:'Ongoing', linkLabel:'See project →', linkAction:'dc-detail', img:'dontcoast.jpeg' }
-};
+// ── TOUR DIVIDE SUPPLY PANEL ──
+let openTourDivideDetail;
+(function() {
+  const overlay = document.createElement('div');
+  overlay.className = 'proj-overlay';
 
-let activeIcon = null;
-const panel = document.getElementById('infoPanel');
+  const panel = document.createElement('div');
+  panel.className = 'proj-panel';
+  panel.innerHTML = `
+    <div class="proj-titlebar">
+      <div class="wb wb--close" id="tdClose"></div>
+      <span class="proj-titlebar-name">Tour Divide Supply</span>
+    </div>
+    <div class="proj-scroll">
+      <img class="proj-hero" src="2025-Tour-Divide-Day1-2_Eddie-Clark_6-2000x1334.jpg" alt="Tour Divide rider on the route">
+      <div class="proj-body">
+        <div class="proj-title">Tour Divide Supply</div>
+        <p class="proj-text">Tour Divide Supply started on the route itself — a way to capture ideas, decisions, and details without breaking stride. It's since grown into a small set of note-taking tools built specifically for riding: fast to open, quick to log, and built to hold up over thousands of miles.</p>
+        <p class="proj-text">It also serves as a creative outlet, translating the experience of the route into graphics, systems, and artifacts. More details at <a href="https://tourdividesupply.com" target="_blank" rel="noopener noreferrer">tourdividesupply.com</a>.</p>
+        <div class="proj-meta">
+          <span>iOS · Android</span>
+          <span>In development</span>
+        </div>
+      </div>
+      <div class="proj-grid-header">
+        <div class="proj-grid-title">Tour Divide State Stamps</div>
+      </div>
+      <div class="proj-grid">
+        <img src="tourdividesupply/Artboard 4 copy 4-100.jpg" alt="Tour Divide Supply">
+        <img src="tourdividesupply/Artboard 4 copy 5-100.jpg" alt="Tour Divide Supply">
+        <img src="tourdividesupply/Artboard 4 copy 6-100.jpg" alt="Tour Divide Supply">
+        <img src="tourdividesupply/Artboard 4 copy 7-100.jpg" alt="Tour Divide Supply">
+      </div>
+    </div>`;
 
-// ── EMPEETHREE DETAIL ──
-function openEmpeethreeDetail() {
-  closeInfo();
-  document.getElementById('empDetail').classList.add('visible');
-}
+  document.body.appendChild(overlay);
+  document.body.appendChild(panel);
 
-document.getElementById('empDetailBack').addEventListener('click', () => {
-  document.getElementById('empDetail').classList.remove('visible');
-});
+  function close() {
+    panel.classList.remove('visible');
+    overlay.classList.remove('visible');
+  }
 
-document.getElementById('empTapeBack').addEventListener('click', () => {
-  document.getElementById('empDetail').classList.remove('visible');
-});
+  openTourDivideDetail = function() {
+    closeAllPanels();
+    panel.classList.add('visible');
+    overlay.classList.add('visible');
+  };
+
+  panel.querySelector('#tdClose').addEventListener('click', close);
+  overlay.addEventListener('click', close);
+})();
+
+// ── EMPEETHREE PANEL ──
+let openEmpeethreeDetail;
+(function() {
+  const overlay = document.createElement('div');
+  overlay.className = 'proj-overlay';
+
+  const panel = document.createElement('div');
+  panel.className = 'proj-panel';
+  panel.innerHTML = `
+    <div class="proj-titlebar">
+      <div class="wb wb--close" id="empClose"></div>
+      <span class="proj-titlebar-name">EMPEETHREE</span>
+    </div>
+    <div class="proj-scroll">
+      <img class="proj-hero" src="empeethree/ipodheader.jpg" alt="iPod with earbuds on yellow background">
+      <div class="proj-body">
+        <div class="proj-title">EMPEETHREE</div>
+        <p class="proj-text">EMPEETHREE started as a frustration with modern music players. Every app wants you to stream, subscribe, or surrender your library to the cloud. EMPEETHREE does none of that. It reads your local files, plays them without fuss, and gets out of the way.</p>
+        <p class="proj-text">Gapless playback, waveform scrubbing, keyboard-first controls. The interface is minimal by design. The music is the thing. More details at <a href="https://empeethree.app" target="_blank" rel="noopener noreferrer">empeethree.app</a>.</p>
+        <div class="proj-meta">
+          <span>macOS · Windows</span>
+          <span>In development</span>
+        </div>
+      </div>
+      <div class="proj-grid-header">
+        <div class="proj-grid-title">Screens</div>
+      </div>
+      <div class="proj-grid">
+        <img src="empeethree/emp_1_icon.png" alt="EMPEETHREE icon">
+        <img src="empeethree/emp_2_search.png" alt="EMPEETHREE search">
+        <img src="empeethree/emp_3_shortcuts.png" alt="EMPEETHREE shortcuts">
+        <img src="empeethree/emp_4_fullapp.png" alt="EMPEETHREE full app">
+      </div>
+    </div>`;
+
+  document.body.appendChild(overlay);
+  document.body.appendChild(panel);
+
+  function close() {
+    panel.classList.remove('visible');
+    overlay.classList.remove('visible');
+  }
+
+  openEmpeethreeDetail = function() {
+    closeAllPanels();
+    panel.classList.add('visible');
+    overlay.classList.add('visible');
+  };
+
+  panel.querySelector('#empClose').addEventListener('click', close);
+  overlay.addEventListener('click', close);
+})();
+
+const projectOpeners = { td: openTourDivideDetail, mp3: openEmpeethreeDetail, dc: () => window.openDontCoast() };
 
 // ── RANDOM ICON PLACEMENT ──
 (function() {
@@ -110,7 +195,7 @@ document.getElementById('empTapeBack').addEventListener('click', () => {
 
 // ── GD PAGE ──
 document.getElementById('gdLink').addEventListener('click', () => {
-  document.getElementById('empDetail').classList.remove('visible');
+  closeAllPanels();
   document.getElementById('gdDetail').classList.add('visible');
 });
 
@@ -133,9 +218,7 @@ document.querySelectorAll('.gd-nav-link').forEach(a => {
 // ── RESUME PAGE ──
 document.getElementById('resumeLink').addEventListener('click', (e) => {
   e.preventDefault();
-  closeInfo();
   closeAllPanels();
-  document.getElementById('empDetail').classList.remove('visible');
   document.getElementById('gdDetail').classList.remove('visible');
   document.getElementById('resumeDetail').classList.add('visible');
 });
@@ -203,7 +286,10 @@ document.querySelectorAll('.icon').forEach(icon => {
     window.removeEventListener('mouseup', onUp);
     window.removeEventListener('touchmove', onMove);
     window.removeEventListener('touchend', onUp);
-    if (!moved) toggleInfo(icon.dataset.id, icon);
+    if (!moved) {
+      const open = projectOpeners[icon.dataset.id];
+      if (open) open();
+    }
   }
 
   icon.addEventListener('mousedown', onDown);
@@ -257,101 +343,14 @@ document.querySelectorAll('.draggable').forEach(el => {
   el.addEventListener('touchstart', onDown, { passive: false });
 });
 
-// ── INFO PANEL ──
-function toggleInfo(id, iconEl) {
-  if (window.innerWidth <= 768) {
-    if (id === 'td')  { /* fall through to info panel */ }
-  }
-  if (activeIcon === iconEl && panel.classList.contains('visible')) { closeInfo(); return; }
-  if (activeIcon && activeIcon !== iconEl) activeIcon.classList.remove('selected');
-  iconEl.classList.add('selected');
-  activeIcon = iconEl;
-  const d = projects[id];
-  document.getElementById('p-title').textContent    = d.title;
-  document.getElementById('p-kind').textContent     = d.kind;
-  document.getElementById('p-name').textContent     = d.name;
-  document.getElementById('p-desc').textContent     = d.desc;
-  document.getElementById('p-platform').textContent = d.platform;
-  document.getElementById('p-status').textContent   = d.status;
-
-  const img    = document.getElementById('p-img');
-  const colorH = document.getElementById('p-color-header');
-  if (d.headerBg) {
-    img.style.display        = 'none';
-    img.src                  = '';
-    colorH.style.display     = 'block';
-    colorH.style.background  = d.headerBg;
-  } else if (d.img) {
-    colorH.style.display = 'none';
-    img.src              = d.img;
-    img.style.display    = 'block';
-    img.className        = 'info-img' + (d.img.includes('image/svg') ? ' svg-logo' : '');
-  } else {
-    img.style.display    = 'none';
-    img.src              = '';
-    colorH.style.display = 'none';
-    img.className        = 'info-img';
-  }
-
-  const linkWrap = document.getElementById('p-link-wrap');
-  const linkEl   = document.getElementById('p-link');
-  if (d.linkHref) {
-    linkEl.innerHTML       = `<a href="${d.linkHref}" target="_blank" class="info-link">${d.linkLabel}</a>`;
-    linkWrap.style.display = 'block';
-  } else if (d.linkAction === 'empeethree-detail') {
-    linkEl.innerHTML       = `<span class="info-link" id="emp-detail-btn">${d.linkLabel}</span>`;
-    linkWrap.style.display = 'block';
-    document.getElementById('emp-detail-btn').addEventListener('click', (e) => {
-      e.stopPropagation();
-      openEmpeethreeDetail();
-    });
-  } else if (d.linkAction === 'dc-detail') {
-    linkEl.innerHTML       = `<span class="info-link" id="dc-detail-btn">${d.linkLabel}</span>`;
-    linkWrap.style.display = 'block';
-    document.getElementById('dc-detail-btn').addEventListener('click', (e) => {
-      e.stopPropagation();
-      closeInfo();
-      window.openDontCoast();
-    });
-  } else {
-    linkWrap.style.display = 'none';
-  }
-
-  const ir = iconEl.getBoundingClientRect();
-  const pw = 240, vw = window.innerWidth, vh = window.innerHeight;
-  panel.style.visibility = 'hidden';
-  panel.classList.add('visible');
-  const ph = panel.offsetHeight || 300;
-  panel.classList.remove('visible');
-  panel.style.visibility = '';
-
-  let left = ir.right + 14;
-  let top  = ir.top;
-  if (left + pw > vw - 12) left = ir.left - pw - 14;
-  if (left < 8) left = 8;
-  if (top + ph > vh - 12) top = vh - ph - 12;
-  if (top < 40) top = 40;
-  panel.style.left = left + 'px';
-  panel.style.top  = top  + 'px';
-  panel.classList.add('visible');
-}
-
-function closeInfo() {
-  panel.classList.remove('visible');
-  if (activeIcon) { activeIcon.classList.remove('selected'); activeIcon = null; }
-}
-
-document.getElementById('closeBtn').addEventListener('click', closeInfo);
-document.getElementById('desktop').addEventListener('mousedown', e => {
-  if (!e.target.closest('.icon') && !e.target.closest('.info-panel')) closeInfo();
-  closeAllPanels();
-});
+document.getElementById('desktop').addEventListener('mousedown', closeAllPanels);
 
 // ── PANEL MANAGER ──
 function closeAllPanels() {
   document.querySelectorAll('.bio-panel, .bio-overlay').forEach(el => el.classList.remove('visible'));
   document.querySelectorAll('.dc-panel, .dc-overlay').forEach(el => el.classList.remove('visible'));
   document.querySelectorAll('.archive-panel, .archive-overlay').forEach(el => el.classList.remove('visible'));
+  document.querySelectorAll('.proj-panel, .proj-overlay').forEach(el => el.classList.remove('visible'));
   ['infoLink', 'archiveLink'].forEach(id => document.getElementById(id).classList.remove('active'));
 }
 
@@ -430,7 +429,7 @@ function closeAllPanels() {
   bioPanel.innerHTML = `
     <div class="bio-titlebar">
       <div class="wb wb--close" id="bioClose"></div>
-      <span class="bio-titlebar-name">Info</span>
+      <span class="bio-titlebar-name">About</span>
     </div>
     <div class="bio-scroll">
       <img class="bio-hero" src="IMG_1615 Large.jpeg" alt="Justin McKinley">
@@ -551,7 +550,7 @@ function closeAllPanels() {
   panel.innerHTML = `
     <div class="archive-titlebar">
       <div class="wb wb--close" id="archiveClose"></div>
-      <span class="archive-titlebar-name">Archive</span>
+      <span class="archive-titlebar-name">Sketchbook</span>
     </div>
     <div class="archive-scroll" id="archiveScroll">
       <div style="padding:48px 16px 40px;text-align:center;width:100%;box-sizing:border-box;"><div style="display:inline-block;text-align:left;"><p style="font-size:26px;font-weight:bold;color:#e8e4dc;margin:0 0 6px 0;line-height:1.2;">"DON'T STOP THINKING ABOUT TOMORROW."</p><p style="font-size:13px;color:#888;margin:0;letter-spacing:0.08em;text-align:right;">— Fleetwood Mac</p></div></div>
