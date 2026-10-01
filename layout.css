@@ -36,7 +36,8 @@
   width: 280px;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 16px;
+  align-items: center;
+  gap: 6px 10px;
   z-index: 30;
 }
 
@@ -49,6 +50,14 @@
 }
 .stickie-link:hover { color: var(--fg); text-decoration: underline; }
 .stickie-link.active { color: var(--fg); border-bottom: 1px solid var(--fg); }
+
+.stickie-sep {
+  display: inline-block;
+  color: var(--fg);
+  font-size: 14px;
+  font-weight: 700;
+  transform: scale(2);
+}
 
 /* ── MOBILE LAYOUT ── */
 @media (max-width: 768px) {

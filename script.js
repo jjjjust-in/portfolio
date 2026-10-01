@@ -13,24 +13,28 @@ let openTourDivideDetail;
     </div>
     <div class="proj-scroll">
       <img class="proj-hero" src="2025-Tour-Divide-Day1-2_Eddie-Clark_6-2000x1334.jpg" alt="Tour Divide rider on the route">
+      <div style="padding:4px 16px 4px;font-size:11px;color:#666;">Photo by: Eddie Clark</div>
       <div class="proj-body">
         <div class="proj-title">Tour Divide Supply</div>
         <p class="proj-text">Tour Divide Supply started on the route itself — a way to capture ideas, decisions, and details without breaking stride. It's since grown into a small set of note-taking tools built specifically for riding: fast to open, quick to log, and built to hold up over thousands of miles.</p>
-        <p class="proj-text">It also serves as a creative outlet, translating the experience of the route into graphics, systems, and artifacts. More details at <a href="https://tourdividesupply.com" target="_blank" rel="noopener noreferrer">tourdividesupply.com</a>.</p>
-        <div class="proj-meta">
-          <span>iOS · Android</span>
-          <span>In development</span>
+        <p class="proj-text">It also serves as a creative outlet, translating the experience of the route into graphics, systems, and artifacts.</p>
+        <div style="margin:4px 0 18px;">
+          <a href="https://tourdividesupply.com" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#f5c842;color:#3a3000;padding:6px 16px;border-radius:999px;font-weight:500;font-size:13px;text-decoration:none;letter-spacing:0.02em;">Visit tourdividesupply.com →</a>
         </div>
       </div>
-      <div class="proj-grid-header">
-        <div class="proj-grid-title">Tour Divide State Stamps</div>
+      <div class="td-scene">
+        <div class="td-notebook-wrap" id="tdNotebookWrap">
+          <img class="td-page td-page-3" src="tourdividesupply/page-3.png" alt="">
+          <img class="td-page td-page-2" src="tourdividesupply/page-2.png" alt="">
+          <img class="td-page td-page-1" src="tourdividesupply/page-1.png" alt="">
+          <img class="td-notebook" src="tourdividesupply/notebook.png" alt="Tour Divide Supply Ride Journal notebook">
+        </div>
+        <div class="td-phone-wrap" id="tdPhoneWrap">
+          <img class="td-phone td-phone-app" src="tourdividesupply/iphone-app.png" alt="Tour Divide Supply app showing the route">
+          <img class="td-phone td-phone-splash" src="tourdividesupply/iphone-splash.png" alt="Tour Divide Supply">
+        </div>
       </div>
-      <div class="proj-grid">
-        <img src="tourdividesupply/Artboard 4 copy 4-100.jpg" alt="Tour Divide Supply">
-        <img src="tourdividesupply/Artboard 4 copy 5-100.jpg" alt="Tour Divide Supply">
-        <img src="tourdividesupply/Artboard 4 copy 6-100.jpg" alt="Tour Divide Supply">
-        <img src="tourdividesupply/Artboard 4 copy 7-100.jpg" alt="Tour Divide Supply">
-      </div>
+      <img src="tourdividesupply/stickers.jpg" alt="Tour Divide bumper stickers" style="width:100%;display:block;margin-top:8px;">
     </div>`;
 
   document.body.appendChild(overlay);
@@ -48,6 +52,42 @@ let openTourDivideDetail;
   };
 
   panel.querySelector('#tdClose').addEventListener('click', close);
+
+  const isTouch = () => window.matchMedia('(hover: none)').matches;
+
+  const notebookWrap = panel.querySelector('#tdNotebookWrap');
+  const pages = Array.from(notebookWrap.querySelectorAll('.td-page'));
+  const shuffleOrder = [pages[2], pages[1], pages[0]];
+  let shuffleIndex = -1;
+
+  notebookWrap.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!isTouch()) return;
+    shuffleOrder.forEach(p => p.classList.remove('td-page-top'));
+    shuffleIndex = (shuffleIndex + 1) % (shuffleOrder.length + 1);
+    if (shuffleIndex < shuffleOrder.length) {
+      shuffleOrder[shuffleIndex].classList.add('td-page-top');
+    }
+  });
+
+  const phoneWrap = panel.querySelector('#tdPhoneWrap');
+
+  phoneWrap.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (isTouch()) {
+      phoneWrap.classList.toggle('active');
+    } else {
+      phoneWrap.classList.add('active');
+    }
+  });
+
+  phoneWrap.addEventListener('mouseleave', () => {
+    if (isTouch()) return;
+    if (!phoneWrap.classList.contains('active')) return;
+    phoneWrap.classList.add('returning');
+    phoneWrap.classList.remove('active');
+    setTimeout(() => phoneWrap.classList.remove('returning'), 300);
+  });
   overlay.addEventListener('click', close);
 })();
 
@@ -69,10 +109,9 @@ let openEmpeethreeDetail;
       <div class="proj-body">
         <div class="proj-title">EMPEETHREE</div>
         <p class="proj-text">EMPEETHREE started as a frustration with modern music players. Every app wants you to stream, subscribe, or surrender your library to the cloud. EMPEETHREE does none of that. It reads your local files, plays them without fuss, and gets out of the way.</p>
-        <p class="proj-text">Gapless playback, waveform scrubbing, keyboard-first controls. The interface is minimal by design. The music is the thing. More details at <a href="https://empeethree.app" target="_blank" rel="noopener noreferrer">empeethree.app</a>.</p>
-        <div class="proj-meta">
-          <span>macOS · Windows</span>
-          <span>In development</span>
+        <p class="proj-text">Gapless playback, waveform scrubbing, keyboard-first controls. The interface is minimal by design. The music is the thing. Available for download now.</p>
+        <div style="margin:4px 0 18px;">
+          <a href="https://empeethree.app" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#f5c842;color:#3a3000;padding:6px 16px;border-radius:999px;font-weight:500;font-size:13px;text-decoration:none;letter-spacing:0.02em;">Download at empeethree.app →</a>
         </div>
       </div>
       <div class="proj-grid-header">
@@ -376,6 +415,10 @@ function closeAllPanels() {
         <p class="dc-text">Much of this is currently centered around the Tour Divide, where I document the miles, the gear, and the people along the way. Most of that documentation lives on YouTube, alongside an ongoing archive of notes, images, and studies that reflect the process as it unfolds.</p>
         <p class="dc-text">My work with brands follows the same approach. I don't take on traditional ambassador roles, instead building partnerships through personal connections and shared intent. Each collaboration is goal-driven and takes shape through content that reflects real use, including writing, photography, video, and design.</p>
         <p class="dc-text">I've collaborated with brands including <a href="https://otsocycles.com" target="_blank" rel="noopener noreferrer">Otso Cycles</a>, <a href="https://wolftoothcomponents.com" target="_blank" rel="noopener noreferrer">Wolf Tooth Components</a>, <a href="https://topodesigns.com" target="_blank" rel="noopener noreferrer">Topo Designs</a>, <a href="https://jpaks.com" target="_blank" rel="noopener noreferrer">JPaks</a>, <a href="https://klite.com.au" target="_blank" rel="noopener noreferrer">kLite</a>, <a href="https://roka.com" target="_blank" rel="noopener noreferrer">Roka</a>, <a href="https://hydrapak.com" target="_blank" rel="noopener noreferrer">HydraPak</a>, and <a href="https://pedaled.com" target="_blank" rel="noopener noreferrer">PedalEd</a>.</p>
+        <p class="dc-text">See where JJJJustin is riding right now.</p>
+        <div style="margin:4px 0 20px;">
+          <a href="https://dontcoast.com" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#f5c842;color:#3a3000;padding:6px 16px;border-radius:999px;font-weight:500;font-size:13px;text-decoration:none;letter-spacing:0.02em;">Visit dontcoast.com →</a>
+        </div>
         <span class="dc-tag">Cycling</span>
         <span class="dc-tag">Bikepacking</span>
         <span class="dc-tag">Tour Divide</span>
@@ -383,10 +426,6 @@ function closeAllPanels() {
       </div>
       <div class="dc-video">
         <iframe src="https://www.youtube.com/embed/pzGovAmOSmo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="dc-grid-header">
-        <div class="dc-grid-title">Tour Divide State Stamps</div>
-        <div class="dc-grid-sub">A series of digital designs depicting the landscape of each state and province the route passes through: Canada, Montana, Idaho, Wyoming, Colorado, and New Mexico.</div>
       </div>
       <div class="dc-grid">
         <img src="tourdividesupply/Artboard 4 copy 3-100.jpg" alt="">
@@ -459,7 +498,7 @@ function closeAllPanels() {
           <div class="bio-credits-text">
             <span class="bio-credits-title">Website Credits:</span>
             <span>Type set in Inconsolata, Vollkorn & Work Sans</span>
-            <span>Photography by Elliot Whitehead & Lucas Winzenburg</span>
+            <span>Photography by Elliot Whitehead, Lucas Winzenburg & Eddie Clark</span>
             <span>Typed on an OLKB x Drop Planck · Gateron Milky Whites</span>
           </div>
         </div>
